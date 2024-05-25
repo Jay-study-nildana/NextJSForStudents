@@ -14,7 +14,7 @@ This is based on the project from the next.js people,
         1. [Bootstrap Starter Project That Uses Imperative Programming](https://github.com/Jay-study-nildana/FrontEndForStudents/tree/main/BootstrapForStudents/Bootstrap5/Bootstrap5TemplateStarterAmeeshaPatel)
     1. Declarative programming
         1. [React JS Starter Project That Uses Declarative programming](https://github.com/Jay-study-nildana/FrontEndForStudents/tree/main/ReactJSForStudents/reactjsstartertemplate)
-        1. [React JS Starter Project with Redux That Uses Declarative programming](https://github.com/Jay-study-nildana/FrontEndForStudents/tree/main/ReactJSForStudents/reduxhelloworldNASAAPOD)
+        1. [React JS Starter Project with Redux That Uses Declarative programming](https://github.com/Jay-study-nildana/FrontEndForStudents/tree/main/ReactJSForStudents/redux-toolkit-nasa-apod)
 1. https://nextjs.org/learn/react-foundations/getting-started-with-react
     1. [RF-4-GettingStarted](RF-4-GettingStarted)
         1. use live preview extension to see output
