@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+  <!-- custom style sheet -->
+  <link rel="stylesheet" href="style.css">
+  <title>React Foundations</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- adding the react library -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- now adding babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- using the react library for UI. -->
+  <script type="text/jsx">
+    const app = document.getElementById('app');
+    const root = ReactDOM.createRoot(app);
+
+    //component that shows header
+    function Header() {
+      return <h1>Develop. Preview. Ship.</h1>;
+    }
+
+    function Headerb() {
+      //you can also pack everything like this, using tiny brackets
+      return (
+        <h1>Develop. Preview. Ship. (header b)</h1>
+      );
+    }
+
+    //you get an entire object with the property title inside it.
+    function Header2(prop) {
+      console.log(prop); //just cave man debug the parameter received. - show the entire object
+      console.log(prop.text1); //just cave man debug the parameter received. - show only the title property
+      return <h1>Develop 2. Preview 2. Ship 2.</h1>;
+    }    
+
+    //using object destructuring
+    function Header3( {text1}) {
+      console.log(text1); //just cave man debug the parameter received.
+      return <h1>Develop 3. Preview 3. Ship 3.</h1>;
+    }    
+
+    //using object destructuring
+    function Header4( {text1}) {
+      console.log(text1); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{text1}</h1>;
+    }
+    
+    function Header5( prop ) {
+      console.log(prop); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{prop.text1}</h1>;
+    }  
+
+    //you can use any word here. not just 'prop'
+    function Header6( exs ) {
+      console.log(exs); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{exs.text1}</h1>;
+    }     
+    
+    function SayHello( prop ) {
+      console.log(prop); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{`Hello. Your name is ${prop.text1}`}</h1>;
+    }      
+
+    function BuildName(name){
+      console.log(name);
+      if(name)
+        return `Hello. Your name is ${name}`;
+      else
+        return `Hello. Your name is anonymous`;  
+    }
+
+    //using another function to build the string
+    function SayHello2( prop ) {
+      console.log(prop); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{BuildName(prop.text1)}</h1>;
+    }     
+
+    //using the ternary operator to avoid using a if else
+    function SayHello3( prop ) {
+      console.log(prop); //just cave man debug the parameter received.
+      //show the values using JSX. 
+      return <h1>{prop.text1? `Hello. Your name is ${prop.text1}` : `Hello. Your name is anonymous`}</h1>;
+    }         
+
+    //we are not using key with li and map
+    //so there will be a key error. 
+    function SuperHeroList(){
+      //first build a list
+      const somelistofheroes = [`Batman`,`Superman`,`Wonder Woman`];
+
+      //use the map facility to loop through the list
+      return (
+        <div>
+          <h1>List of Super Heroes</h1>
+          <ul>
+            {
+              somelistofheroes.map(
+                x => <li>{x}</li>
+              )
+            }
+          </ul>
+        </div>
+      );
+    }
+
+    //you will see a 'key' warning error in developer tools
+    //here, use a key with the list 
+    function SuperHeroListWithKey(){
+      //first build a list
+      const somelistofheroes = [`Batman`,`Superman`,`Wonder Woman`];
+
+      //using hooks for state management
+      //first part is the state variable
+      //second part is the state variable update function
+      //the 0 is the initial value of the likecount state, like initializing a variable
+      const [likecount, updatelikecount] = React.useState(0);
+
+      function handleClick(){
+        console.log("like me button clicked");
+        //now we send the new value to the updater function as a parameter
+        updatelikecount(likecount + 1);
+        //here we want the count to increase. so, we say, likecount + 1
+        //but, you can send any value you want. 
+        //like, you can just pass '100' and 100 will get stored in the 
+        //likecount variable. so, whatever you pass, gets stored. 
+        //think of this as setter and getter situation. 
+        //the variable, likecount is the getter (read only)
+        //and the function, updatelikecount, is the setter and the only way to update the likecount variable.
+      }
+
+      //use the map facility to loop through the list
+      return (
+        <div>
+          <h1>List of Super Heroes</h1>
+          <ul>
+            {
+              somelistofheroes.map(
+                x => <li key={x}>{x}</li>
+              )
+            }
+          </ul>
+          <button onClick={handleClick}>like me : {likecount}</button>          
+        </div>
+      );
+    }    
+
+    //component that uses other components to show stuff
+    function HomePage() {
+      return (
+        <div>
+          <Header />
+          <Headerb />
+          <Header2 text1="whats up? two"/>
+          <Header3 text1="whats up? three"/>
+          <Header4 text1="whats up? four"/>
+          <Header5 text1="whats up? five"/>
+          <Header6 text1="whats up? six"/>
+          <SayHello text1="Jay" />
+          <SayHello2 text1="Jay 2" />
+          <SayHello3 text1="Jay 3" />
+          <SayHello3 />
+          <SuperHeroList />
+          <SuperHeroListWithKey />
+        </div>
+      );
+    }
+
+    //we render homepage which in turns renders all components inside
+    root.render(<HomePage />);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
