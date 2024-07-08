@@ -7,6 +7,7 @@ New to coding? Check out my [Front End For Students](https://github.com/Jay-stud
 # Projects and Folders
 
 1. [NextJSOfficialTutorials](NextJSOfficialTutorials) - code that was built as I followed along with the official tutorials on their website.
+2. [Next JS Demo Capstone Project](https://github.com/Jay-study-nildana/VercelDashboardApp) - the project my students build at the end of their training.
 
 # hire and get to know me
 
